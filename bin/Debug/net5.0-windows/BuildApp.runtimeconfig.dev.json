@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\lyquo\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\lyquo\\.nuget\\packages"
+    ]
+  }
+}
