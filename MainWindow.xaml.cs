@@ -152,12 +152,17 @@ namespace BuildApp
         private async void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
             settings = new Dictionary<string, string>();
-
-            settings.Add("debugPath", debugPathTb.Text);
-            settings.Add("destPath", destPathTb.Text);
-            settings.Add("fileName", fileNameTb.Text);
-            string jsonString = JsonSerializer.Serialize(settings);
-            await WriteFile(jsonString);
+            try
+            {
+                settings.Add("debugPath", debugPathTb.Text);
+                settings.Add("destPath", destPathTb.Text);
+                settings.Add("fileName", fileNameTb.Text);
+                string jsonString = JsonSerializer.Serialize(settings);
+                await WriteFile(jsonString);
+            } catch(Exception ex)
+            {
+                MessageBox.Show("Some error when saving your settings!");
+            }
             
         }
         #endregion
@@ -279,8 +284,8 @@ namespace BuildApp
             await File.WriteAllTextAsync(settingFile, jsonString);
             MessageBox.Show(settingFile);
         }
-        #endregion
 
+        #endregion
 
     }
 }

@@ -1,1 +1,1 @@
-{"debugPath":"D:\\GitHub\\BuildApp\\bin\\Debug\\net5.0-windows","destPath":"D:\\Download","fileName":"BuildApp"}
+{"debugPath":"D:\\GitHub\\BuildApp\\bin\\Debug\\net5.0-windows","destPath":"D:\\Download","fileName":"BuildApp-V1"}

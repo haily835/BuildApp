@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "nRQ2H4KzChfR+7cza0GBii+njRMRjnMrcfbzIIhnvvDjfPGmnujGqtQxXYyXlN48lAizAfjhzvnTPO4H9/A3FQ==",
+  "dgSpecHash": "gVePmPTZtcbNW3C+1cPRxYj0iK/jeng47Vj/7Tf+7Kk472dh3bmyAHM23ekuu8lw7fq8Rd+BcLcF6eqt+KmNow==",
   "success": true,
   "projectFilePath": "D:\\GitHub\\BuildApp\\BuildApp.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\lyquo\\.nuget\\packages\\adonisui\\1.17.0\\adonisui.1.17.0.nupkg.sha512",
+    "C:\\Users\\lyquo\\.nuget\\packages\\adonisui.classictheme\\1.17.0\\adonisui.classictheme.1.17.0.nupkg.sha512",
     "C:\\Users\\lyquo\\.nuget\\packages\\dotnetzip\\1.15.0\\dotnetzip.1.15.0.nupkg.sha512",
     "C:\\Users\\lyquo\\.nuget\\packages\\microsoft-windowsapicodepack-core\\1.1.4\\microsoft-windowsapicodepack-core.1.1.4.nupkg.sha512",
     "C:\\Users\\lyquo\\.nuget\\packages\\microsoft-windowsapicodepack-shell\\1.1.4\\microsoft-windowsapicodepack-shell.1.1.4.nupkg.sha512",

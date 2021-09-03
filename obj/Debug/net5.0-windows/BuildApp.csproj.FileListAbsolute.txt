@@ -23,3 +23,7 @@ D:\GitHub\BuildApp\obj\Debug\net5.0-windows\BuildApp.pdb
 D:\GitHub\BuildApp\obj\Debug\net5.0-windows\BuildApp.genruntimeconfig.cache
 D:\GitHub\BuildApp\bin\Debug\net5.0-windows\Microsoft.WindowsAPICodePack.dll
 D:\GitHub\BuildApp\bin\Debug\net5.0-windows\DotNetZip.dll
+D:\GitHub\BuildApp\obj\Debug\net5.0-windows\BuildApp.csproj.AssemblyReference.cache
+D:\GitHub\BuildApp\bin\Debug\net5.0-windows\AdonisUI.dll
+D:\GitHub\BuildApp\bin\Debug\net5.0-windows\AdonisUI.ClassicTheme.dll
+D:\GitHub\BuildApp\obj\Debug\net5.0-windows\App.baml

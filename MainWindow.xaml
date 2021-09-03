@@ -5,92 +5,141 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BuildApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="600">
+        Title="MainWindow" Height="400" Width="600">
+    <Window.Resources>
+        <Style x:Key="textBlockSize14" TargetType="TextBlock" >
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+        </Style>
+
+        <Style x:Key="borderCornerRadius" TargetType="Border" >
+            <Setter Property="CornerRadius" Value="3"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Background" Value="#2196f3"/>
+            <Style.Resources>
+                <Style TargetType="TextBlock" BasedOn="{StaticResource textBlockSize14}">
+                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                    <Setter Property="Foreground" Value="White"/>
+                </Style>
+            </Style.Resources>
+        </Style>
+
+        <Style x:Key="textboxBorder" TargetType="TextBox">
+            <Style.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="3" />
+                    <Setter Property="BorderBrush" Value="Gray"/>
+                    <Setter Property="Background" Value="White"/>
+                </Style>
+                <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource textBlockSize14}">
+                    
+                </Style>
+            </Style.Resources>
+                  <Setter Property="BorderThickness" Value="2"/>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="100"/>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="120"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" FontSize="28" HorizontalAlignment="Center" VerticalAlignment="Center">Build WPF solution</TextBlock>
         
         <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="5" HorizontalAlignment="Center">
-            <TextBlock Text="Debug folder: " TextWrapping="Wrap" Width="120"/>
-            <TextBox x:Name="debugPathTb" Width="400"></TextBox>
-            <Button x:Name="debugPathBtn" Width="40" Content="..." Click="debugPathBtn_Click"/>
+            <TextBlock  FontSize="14" Text="Debug folder: " TextWrapping="Wrap" Width="120"/>
+            <TextBox x:Name="debugPathTb" Width="400" Style="{StaticResource textboxBorder}"></TextBox>
+            <Border x:Name="debugPathBtn" Width="40" Height="30" Margin="5 0 0 0" MouseLeftButtonDown="debugPathBtn_Click" Style="{StaticResource borderCornerRadius}">
+                <TextBlock Text="..." />
+            </Border>
         </StackPanel>
 
         <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="5" HorizontalAlignment="Center">
-            <TextBlock Text="Destination folder: " TextWrapping="Wrap" Width="120" />
-            <TextBox x:Name="destPathTb" Width="400"></TextBox>
-            <Button x:Name="destPathBtn" Width="40" Content="..." Click="destPathBtn_Click"/>
+            <TextBlock  FontSize="14" Text="Destination folder: " TextWrapping="Wrap" Width="120" />
+            <TextBox x:Name="destPathTb" Width="400" Style="{StaticResource textboxBorder}" ></TextBox>
+            <Border x:Name="destPathBtn" Width="40" Height="30" Margin="5 0 0 0" MouseLeftButtonDown="destPathBtn_Click" Style="{StaticResource borderCornerRadius}">
+                <TextBlock Text="..." />
+            </Border>
         </StackPanel>
 
         <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="5" HorizontalAlignment="Center">
-            <TextBlock Text="File name: " TextWrapping="Wrap" Width="120" />
-            <TextBox x:Name="fileNameTb" Width="320"></TextBox>
-            <TextBox Width="120">
-                + Timestamp.zip
-            </TextBox>
+            <TextBlock  FontSize="14" Text="File name: " TextWrapping="Wrap" Width="120" />
+            <TextBox x:Name="fileNameTb" Width="320" Style="{StaticResource textboxBorder}"></TextBox>
+            <Border x:Name="SaveBtn" Width="120" Height="30" Margin="5 0 0 0" MouseLeftButtonDown="SaveBtn_Click"  Style="{StaticResource borderCornerRadius}">
+                <TextBlock Text="Save Settings" /></Border>
         </StackPanel>
 
-        <StackPanel Grid.Row="4" Height="100" Margin="20 0 0 0">
-            <TextBlock>Exclude file types: </TextBlock>
-            <ItemsControl x:Name="typeList" ItemsSource="{Binding fileTypes, Mode=TwoWay}" >
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <UniformGrid Columns="5" Rows="10" />
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Grid Width="120">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition />
-                                <ColumnDefinition />
-                            </Grid.ColumnDefinitions>
-                            <StackPanel Margin="10 0 0 0" >
-                                <CheckBox Grid.Column="0" x:Name="typeCheckBox" IsChecked="False" Checked="typeCheckBox_Checked" Unchecked="typeCheckBox_Unchecked" Tag="{Binding}"/>
-                            </StackPanel>
-                            <TextBlock Grid.ColumnSpan="2" Margin="30,0,0,0" Text="{Binding}" />
-                        </Grid>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-        </StackPanel>
+        <Grid Grid.Row="4" Margin="10 0 10 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Margin="0 0 10 0">
+                <TextBlock FontSize="14" >Delete files of types:</TextBlock>
+                <ItemsControl x:Name="typeList" ItemsSource="{Binding fileTypes}" Height="100" ScrollViewer.VerticalScrollBarVisibility="Visible" Margin="0,5,0,0" >
+                    <ItemsControl.Template>
+                        <ControlTemplate>
+                            <ScrollViewer x:Name="ScrollViewer" Padding="{TemplateBinding Padding}">
+                                <ItemsPresenter />
+                            </ScrollViewer>
+                        </ControlTemplate>
+                    </ItemsControl.Template>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40"/>
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0" Margin="5">
+                                    <CheckBox x:Name="typeCheckBox" IsChecked="False" Checked="typeCheckBox_Checked" Unchecked="typeCheckBox_Unchecked" Tag="{Binding}"/>
+                                </StackPanel>
+                                <TextBlock Grid.Column="1" Text="{Binding}" Style="{StaticResource textBlockSize14}" HorizontalAlignment="Left"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
 
-        <StackPanel Grid.Row="5" Height="50" Margin="20 0 0 0">
-            <TextBlock>Exclude folders:</TextBlock>
-            <ItemsControl x:Name="folderList" ItemsSource="{Binding subfolders, Mode=TwoWay}" >
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <UniformGrid Columns="5" Rows="10" />
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Grid Width="120">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition />
-                                <ColumnDefinition />
-                            </Grid.ColumnDefinitions>
-                            <StackPanel Margin="10 0 0 0">
-                                <CheckBox Grid.Column="0" x:Name="folderCheckBox" IsChecked="False" Checked="folderCheckBox_Checked" Unchecked="folderCheckBox_Unchecked" Tag="{Binding}"/>
-                            </StackPanel>
-                            <TextBlock Grid.ColumnSpan="2" Margin="30,0,0,0" Text="{Binding}" />
-                        </Grid>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-        </StackPanel>
+            <StackPanel Grid.Column="1">
+                <TextBlock FontSize="14" >Delete folders:</TextBlock>
+                <ItemsControl x:Name="folderList" ItemsSource="{Binding subfolders, Mode=TwoWay}" Height="100" ScrollViewer.VerticalScrollBarVisibility="Visible" Margin="0,5,0,0">
+                    <ItemsControl.Template>
+                        <ControlTemplate>
+                            <ScrollViewer x:Name="ScrollViewer" Padding="{TemplateBinding Padding}">
+                                <ItemsPresenter />
+                            </ScrollViewer>
+                        </ControlTemplate>
+                    </ItemsControl.Template>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40"/>
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0" Margin="5">
+                                    <CheckBox  x:Name="folderCheckBox" IsChecked="False" Checked="folderCheckBox_Checked" Unchecked="folderCheckBox_Unchecked" Tag="{Binding}"/>
+                                </StackPanel>
+                                <TextBlock Grid.Column="1" Text="{Binding}" Style="{StaticResource textBlockSize14}" HorizontalAlignment="Left"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+                
+            </StackPanel>
 
-        <StackPanel Grid.Row="6" Margin="10" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button x:Name="BuildBtn" Width="100" Click="BuildBtn_Click" Margin="0 0 5 0">BUILD</Button>
-            <Button x:Name="SaveBtn" Width="100" Click="SaveBtn_Click" Margin="5 0 0 0">SAVE SETTING</Button>
+        </Grid>
+       
+        <StackPanel Grid.Row="5" Margin="10" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Border x:Name="BuildBtn" Width="100" Height="30" MouseLeftButtonDown="BuildBtn_Click" Style="{StaticResource borderCornerRadius}" >
+                <TextBlock Text="BUILD" FontWeight="Bold"/>
+            </Border>
         </StackPanel>
     </Grid>
 </Window>

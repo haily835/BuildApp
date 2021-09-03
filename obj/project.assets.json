@@ -2,6 +2,36 @@
   "version": 3,
   "targets": {
     "net5.0-windows7.0": {
+      "AdonisUI/1.17.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Drawing.Common": "4.6.0"
+        },
+        "compile": {
+          "lib/netcoreapp3.0/AdonisUI.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/AdonisUI.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ]
+      },
+      "AdonisUI.ClassicTheme/1.17.0": {
+        "type": "package",
+        "dependencies": {
+          "AdonisUI": "1.17.0"
+        },
+        "compile": {
+          "lib/netcoreapp3.0/AdonisUI.ClassicTheme.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/AdonisUI.ClassicTheme.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ]
+      },
       "DotNetZip/1.15.0": {
         "type": "package",
         "dependencies": {
@@ -181,6 +211,36 @@
     }
   },
   "libraries": {
+    "AdonisUI/1.17.0": {
+      "sha512": "Qb0T6TuQB9fPYESFr24clBNC+QbIJB07yWaZ7OotSrNHsBj7hdwglc4yqJ7skZqI8e88owTeVfmcwpq4tdqucA==",
+      "type": "package",
+      "path": "adonisui/1.17.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "adonisui.1.17.0.nupkg.sha512",
+        "adonisui.nuspec",
+        "lib/net45/AdonisUI.dll",
+        "lib/net45/AdonisUI.xml",
+        "lib/netcoreapp3.0/AdonisUI.dll",
+        "lib/netcoreapp3.0/AdonisUI.xml"
+      ]
+    },
+    "AdonisUI.ClassicTheme/1.17.0": {
+      "sha512": "5HMwLksmq2KxLywIGQk89Kr5eHfphYxhxXZ4y7Z8LvcwxZHlvt43eywf5fQCDtVCFA3hYWP65Lwh9CRJAbGtsw==",
+      "type": "package",
+      "path": "adonisui.classictheme/1.17.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "adonisui.classictheme.1.17.0.nupkg.sha512",
+        "adonisui.classictheme.nuspec",
+        "lib/net45/AdonisUI.ClassicTheme.dll",
+        "lib/net45/AdonisUI.ClassicTheme.xml",
+        "lib/netcoreapp3.0/AdonisUI.ClassicTheme.dll",
+        "lib/netcoreapp3.0/AdonisUI.ClassicTheme.xml"
+      ]
+    },
     "DotNetZip/1.15.0": {
       "sha512": "sqVRN5V5NI/HM5Ll+Flr+u4fIf2pNiGSQr5pusAGCufYeEQ3Wn3yFlgw87iqHhbTkKQmCHZVsfBfRw05GSKG5g==",
       "type": "package",
@@ -532,6 +592,7 @@
   },
   "projectFileDependencyGroups": {
     "net5.0-windows7.0": [
+      "AdonisUI.ClassicTheme >= 1.17.0",
       "DotNetZip >= 1.15.0",
       "Microsoft-WindowsAPICodePack-Shell >= 1.1.4"
     ]
@@ -575,6 +636,10 @@
       "net5.0-windows7.0": {
         "targetAlias": "net5.0-windows",
         "dependencies": {
+          "AdonisUI.ClassicTheme": {
+            "target": "Package",
+            "version": "[1.17.0, )"
+          },
           "DotNetZip": {
             "target": "Package",
             "version": "[1.15.0, )"
